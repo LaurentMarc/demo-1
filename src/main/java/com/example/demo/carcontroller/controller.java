@@ -20,27 +20,27 @@ public class controller {
 	@Autowired
 	private CarDao cardao;
 	
-	@RequestMapping(value="/liste", method=RequestMethod.GET)
+	@RequestMapping(value="/vehicules", method=RequestMethod.GET)
     public List<Car>listeElements() {
         return cardao.findAll();
     }
 	
-	@GetMapping(value = "/liste/{id}") //autre écriture de RequestMapping
+	@GetMapping(value = "/vehicule/{id}") //autre écriture de RequestMapping
 	public Car afficherUnElement(@PathVariable int id) {
         return cardao.findById(id);
 	}
 	
-	@PostMapping(value = "/liste")
+	@PostMapping(value = "/vehicule")
 	public void creerUnElement(@RequestBody Car car) {
 		cardao.save(car);		
 	}
 	
-	@PutMapping(value = "/liste/{id}")
-	public Car modifierUnElement(@RequestBody Car car) {
-		return cardao.update(car);
+	@PutMapping(value = "/vehicule/{id}")
+	public Car modifierUnElement(@RequestBody Car car, @PathVariable int id) {
+		return cardao.update(id, car);
 	}
 	
-	@DeleteMapping(value = "/liste/{id}")
+	@DeleteMapping(value = "/vehicule/{id}")
 	public Car supprimerUnElement(@PathVariable int id) {
 		return cardao.delete(id);
 	}
