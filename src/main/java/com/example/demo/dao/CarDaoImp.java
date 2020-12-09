@@ -39,5 +39,18 @@ public class CarDaoImp implements CarDao {
 		carlist.add(car);
         return car;
 	}
+	
+	@Override
+	public Car update(Car car) {
+		Car updated_car = carlist.set((car.getId() - 1), car); // !! index utilisateur en base 1 !!
+		return updated_car;
+	}
+	
+	@Override
+	public Car delete(int id) {
+		Car deleted_car = carlist.remove(id - 1);
+		return deleted_car;
+	}
+
 }
 
