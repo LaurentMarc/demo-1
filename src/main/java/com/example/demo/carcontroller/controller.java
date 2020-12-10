@@ -30,7 +30,7 @@ public class controller {
         return cardao.findById(id);
 	}
 	
-	@PostMapping(value = "/vehicule")
+	@PostMapping(value = "/vehicules")
 	public void creerUnElement(@RequestBody Car car) {
 		cardao.save(car);		
 	}

@@ -46,7 +46,7 @@ public class CarDaoImp implements CarDao {
             if(car.getId() == id){
             	int index = carlist.indexOf(car);
                 carlist.set(index, requested_car);
-                return car;
+                return requested_car;
             }
         }
 		return null;
@@ -57,6 +57,6 @@ public class CarDaoImp implements CarDao {
 		Car deleted_car = carlist.remove(id - 1);
 		return deleted_car;
 	}
-
+	
 }
 
