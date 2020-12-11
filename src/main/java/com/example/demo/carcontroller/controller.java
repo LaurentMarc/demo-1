@@ -16,14 +16,14 @@ import com.example.demo.model.Car;
 
 @RestController
 public class controller {
-	
+
 	@Autowired
 	private CarDao cardao;
-	
+
 	@RequestMapping(value="/vehicules", method=RequestMethod.GET)
-    public List<Car>listeElements() {
-        return cardao.findAll();
-    }
+	public List<Car>listeElements() {
+		return cardao.findAll();
+	}
 	
 	@GetMapping(value = "/vehicule/{id}") //autre écriture de RequestMapping
 	public Car afficherUnElement(@PathVariable int id) {
@@ -34,15 +34,15 @@ public class controller {
 	public void creerUnElement(@RequestBody Car car) {
 		cardao.save(car);		
 	}
-	
+
 	@PutMapping(value = "/vehicule/{id}")
 	public Car modifierUnElement(@RequestBody Car car, @PathVariable int id) {
-		return cardao.update(id, car);
+		return cardao.save(car);
 	}
-	
+
 	@DeleteMapping(value = "/vehicule/{id}")
-	public Car supprimerUnElement(@PathVariable int id) {
-		return cardao.delete(id);
+	public void supprimerUnElement(@PathVariable int id) {
+		cardao.deleteById(id);
 	}
 	
 }
